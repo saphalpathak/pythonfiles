@@ -5,62 +5,57 @@ def computer():
     # print(c_choice)
     return c_choice
 def win_loose():
-
-    computer()
-    if computer() == "snake" and player_input == 1:
-        abc = "Tied"
-        print(abc)
-    elif computer() == "snake" and player_input == 2:
-        abc = "You loose"
-        print(abc)
-        ai +=1
-    elif computer() == "snake" and player_input == 3:
-        abc = "You win"
-        print(abc)
-        pl += 1
-    elif computer() == "water" and player_input == 1:
-        abc = "You win"
-        print(abc)
-        pl += 1
-    elif computer() == "water" and player_input == 2:
-        abc = "Tied"
-        print(abc)
-    elif computer() == "water" and player_input == 3:
-        abc = "You loose"
+    
+    choice = computer()
+    print(f"Computer choice: {choice}\nYour choice: {player_input}")
+    if choice == "snake" and player_input == "snake":
+        print("*****Tied*****")
+    elif choice == "snake" and player_input == "water":
+        print("*****You loose*****")
         ai += 1
-        print(abc)
-    elif computer() == "gun" and player_input == 1:
-        abc = "You loose"
-        ai += 1
-        print(abc)
-    elif computer() == "gun" and player_input == 2:
-        abc = "You win"
-        print(abc)
+    elif choice == "snake" and player_input == "gun":
+        print("*****You win*****")
         pl += 1
-    elif computer() == "gun" and player_input == 3:
-        abc = "Tied"
-        print(abc)
+    elif choice == "water" and player_input == "snake":
+        print("*****You win*****")
+        pl += 1
+    elif choice == "water" and player_input == "water":
+        print("*****Tied*****")
+    elif choice == "water" and player_input == "gun":
+        print("*****You loose*****")
+        ai += 1
+    elif choice == "gun" and player_input == "snake":
+        print("*****You loose*****")
+        ai += 1
+    elif choice == "gun" and player_input == "water":
+        print("*****You win*****")
+        pl += 1
+    elif choice == "gun" and player_input == "gun":
+        print("*****Tied*****")
+    print(ai)
+    print(pl)
 
-def how_wins():
-    if pl > ai:
-        print("You won!\n Your score", pl , "Computer score", ai)
-    elif pl < ai:
-        print("You Loose!\n Your score", pl , "Computer score", ai)
-    else:
-        print("Tied")
+# def how_wins():
+#     if pl > ai:
+#         print(f"You won!\n Your score" {pl} "Computer score" {ai})
+#     elif pl < ai:
+#         print("You Loose!\n Your score" {pl} "Computer score" {ai})
+#     else:
+#         print("Tied")
 
     
 print("Welcome to snake water gun game!\n You have only 10 chances to win.")
-chances = 0
-while chances<=10:
-    
+chances =0
+
+while chances<=9:
     ai = 0
     pl = 0
-    player_input = int(input("Please enter 1 for snake, 2 for water and 3 for gun: "))
+    player_input =input("Please enter your choice snake, water or gun: ")
+    player_input = player_input.lower()
     win_loose()
-    chances +=1
-    if chances >10:
-        print("Game Over!")
-        how_wins()
-        break
+    chances += 1
+    print(f"You have {10-chances} left")
+if chances >9:
+    print("Game Over!")
+    # how_wins()
 
