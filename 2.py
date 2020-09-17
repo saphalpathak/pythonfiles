@@ -1,3 +1,4 @@
+# Program
 def format_name(first_name,last_name):
     if (first_name != "" and last_name !=""):
         string = "Name:" + last_name + "," + first_name
